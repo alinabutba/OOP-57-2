@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+
+
 # 1. Инкапсуляция
 class UserAccount:
 
@@ -31,11 +34,55 @@ class UserAccount:
             print("Ошибка: Требуется авторизация")
 
 
-user_1 = UserAccount("Adele", 2000, "123")
-user_1.login("123")
-user_1.deposit(100)
-#print(user_1.get_balance())
-user_1.withdraw(1100)
-#print(user_1.get_balance())
-user_1.withdraw(1000000)
-print(user_1.get_balance())
+# user_1 = UserAccount("Adele", 2000, "123")
+# user_1.login("123")
+# user_1.deposit(100)
+# print(user_1.get_balance())
+# user_1.withdraw(1100)
+# print(user_1.get_balance())
+# user_1.withdraw(1000000)
+# print(user_1.get_balance())
+
+
+# 2. Абстракция
+class Transport(ABC):
+
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def fuel_type(self):
+        pass
+
+
+class Car(Transport):
+
+    def move(self):
+        return "Машина едет по дороге"
+
+    def fuel_type(self):
+        return "Топливо машины — бензин"
+
+class Bike(Transport):
+
+    def move(self):
+        return "Велосипед едет по дороге"
+
+    def fuel_type(self):
+        return "Топливо велосипеда — мускульная сила"
+
+class Plane(Transport):
+
+    def move(self):
+        return "Самолет летает по воздуху"
+
+    def fuel_type(self):
+        return "Топливо самолета — керосин"
+
+# car = Car()
+# bike = Bike()
+# plane = Plane()
+# print(car.move())
+# print(bike.move())
+# print(plane.fuel_type())
